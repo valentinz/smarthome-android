@@ -1,19 +1,62 @@
 package de.querformatik.smarthome.gui;
 
+import de.querformatik.smarthome.R;
+import android.content.res.Resources;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
 public class AerationSeekBarChangeListener implements OnSeekBarChangeListener {
-	public TextView getAerationStatus() {
-		return aerationStatus;
+	private SeekBar seekBar;
+	private TextView textView;
+	private Resources resources;
+	
+	
+	public SeekBar getSeekBar() {
+		return seekBar;
 	}
 
-	public void setAerationStatus(TextView aerationStatus) {
-		this.aerationStatus = aerationStatus;
+	public void setSeekBar(SeekBar seekBar) {
+		this.seekBar = seekBar;
 	}
 
-	private TextView aerationStatus;
+	public TextView getTextView() {
+		return textView;
+	}
+
+	public void setTextView(TextView textView) {
+		this.textView = textView;
+	}
+	
+	public Resources getResources() {
+		return resources;
+	}
+	
+	public void setResources(Resources resources) {
+		this.resources = resources;
+	}
+	
+	public void setStatus(int status) {
+		getSeekBar().setProgress(status*2);
+		String statusText = "";
+		
+		switch (status) {
+			case 0:
+				statusText = getResources().getString(R.string.text_stop);
+				break;
+			case 1:
+				statusText = getResources().getString(R.string.text_level1);
+				break;
+			case 2:
+				statusText = getResources().getString(R.string.text_level2);
+				break;
+			case 3:
+				statusText = getResources().getString(R.string.text_level3);
+				break;
+		}
+		
+		getTextView().setText(statusText);
+	}
 	
 	@Override
 	public void onStopTrackingTouch(SeekBar seekBar) {
@@ -30,9 +73,6 @@ public class AerationSeekBarChangeListener implements OnSeekBarChangeListener {
 	@Override
     public void onProgressChanged(SeekBar seekBar, int progress,
             boolean fromUser) {
-		progress = (int)Math.round(((float)progress)/2);
-		seekBar.setProgress(progress*2);
-		aerationStatus.setText(progress + "");
-
+		this.setStatus((int)Math.round(((float)progress)/2));
 	}
 }

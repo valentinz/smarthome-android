@@ -1,15 +1,11 @@
 package de.querformatik.smarthome.gui;
 
 import de.querformatik.smarthome.R;
-import de.querformatik.smarthome.R.id;
-import de.querformatik.smarthome.R.layout;
-import de.querformatik.smarthome.R.menu;
 import de.querformatik.smarthome.backend.AerationService;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
 public class AerationActivity extends Activity {
@@ -28,13 +24,16 @@ public class AerationActivity extends Activity {
 
         aerationStatus = (TextView) findViewById(R.id.aerationStatus);
 
+        aeration = (SeekBar) findViewById(R.id.aerationSeekbar);
+
         
         aerationListener = new AerationSeekBarChangeListener();
-        aerationListener.setAerationStatus(aerationStatus);
+        aerationListener.setTextView(aerationStatus);
+        aerationListener.setSeekBar(aeration);
+        aerationListener.setResources(getResources());
         
-        aeration = (SeekBar) findViewById(R.id.aerationSeekbar);
         // TODO: Use AerationListener
-        aeration.setProgress(aerationService.getCurrent());
+        aerationListener.setStatus(aerationService.getCurrent());
         
         aeration.setOnSeekBarChangeListener(aerationListener);
     }
