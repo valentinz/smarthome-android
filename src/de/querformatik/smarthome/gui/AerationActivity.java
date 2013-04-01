@@ -28,6 +28,7 @@ public class AerationActivity extends Activity {
 
         
         aerationListener = new AerationSeekBarChangeListener();
+        aerationListener.setAerationService(aerationService);
         aerationListener.setTextView(aerationStatus);
         aerationListener.setSeekBar(aeration);
         aerationListener.setResources(getResources());

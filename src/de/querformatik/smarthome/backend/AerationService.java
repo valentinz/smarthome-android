@@ -4,4 +4,8 @@ public class AerationService {
 	public int getCurrent() {
 		return 2;
 	}
+	
+	public void setCurrent(int current) {
+		
+	}
 }

@@ -1,6 +1,7 @@
 package de.querformatik.smarthome.gui;
 
 import de.querformatik.smarthome.R;
+import de.querformatik.smarthome.backend.AerationService;
 import android.content.res.Resources;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
@@ -10,7 +11,7 @@ public class AerationSeekBarChangeListener implements OnSeekBarChangeListener {
 	private SeekBar seekBar;
 	private TextView textView;
 	private Resources resources;
-	
+	private AerationService aerationService;
 	
 	public SeekBar getSeekBar() {
 		return seekBar;
@@ -34,6 +35,14 @@ public class AerationSeekBarChangeListener implements OnSeekBarChangeListener {
 	
 	public void setResources(Resources resources) {
 		this.resources = resources;
+	}
+	
+	public AerationService getAerationService() {
+		return aerationService;
+	}
+	
+	public void setAerationService(AerationService aerationService) {
+		this.aerationService = aerationService;
 	}
 	
 	public void setStatus(int status) {
@@ -60,8 +69,7 @@ public class AerationSeekBarChangeListener implements OnSeekBarChangeListener {
 	
 	@Override
 	public void onStopTrackingTouch(SeekBar seekBar) {
-		// TODO Auto-generated method stub
-		
+		this.aerationService.setCurrent(seekBar.getProgress()/2);		
 	}
 	
 	@Override
