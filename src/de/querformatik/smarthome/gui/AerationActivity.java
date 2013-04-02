@@ -5,9 +5,13 @@ import de.querformatik.smarthome.backend.AerationService;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.preference.PreferenceManager;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,9 +50,10 @@ public class AerationActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aeration);
         
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        
         aerationService = new AerationService();
-        //aerationService.setSoapApi("http://example.com/smarthome/api.php");
-        aerationService.setSoapApi("http://valentin.zickner.de/smarthome/api.php");
+        aerationService.setSoapApi(prefs.getString("api_url", getResources().getString(R.string.pref_api_url_default)));
         aerationService.setListener(handler);
         
         aerationStatus = (TextView) findViewById(R.id.aerationStatus);
@@ -74,6 +79,17 @@ public class AerationActivity extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.activity_aeration, menu);
         return true;
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+    	switch (item.getItemId()) {
+        case R.id.menu_settings:
+        	Intent intent = new Intent(this, SettingsActivity.class);
+        	startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
     
 	protected String getStatusText(int status) {

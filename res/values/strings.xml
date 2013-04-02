@@ -9,7 +9,12 @@
 	<string name="text_level1">Stufe 1</string>
 	<string name="text_level2">Stufe 2</string>
 	<string name="text_level3">Stufe 3</string>
-	<string name="text_set_level_success_prefix">Es wurde in</string>
+	<string name="text_set_level_success_prefix">Die Lüftungsanlage wurde in</string>
 	<string name="text_set_level_success_suffix">geschalten!</string>
 	<string name="text_set_level_fail">Die Lüftungsanlage konnte nicht erreicht werden, bitte prüfe die Verbindung zum WLAN.</string>
+	
+	<string name="settings_name">Einstellungen</string>
+	<string name="pref_api_url">API URL</string>
+	<string name="pref_api_url_summ">Link zur API zum Aktualisierungen bekanntgeben.</string>
+	<string name="pref_api_url_default">http://example.com/smarthome/api.php</string>
 </resources>
