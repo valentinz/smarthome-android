@@ -1,15 +1,12 @@
 package de.querformatik.smarthome.gui;
 
-import de.querformatik.smarthome.R;
 import de.querformatik.smarthome.backend.AerationService;
 import android.content.res.Resources;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
 
 public class AerationSeekBarChangeListener implements OnSeekBarChangeListener {
 	private SeekBar seekBar;
-	private TextView textView;
 	private Resources resources;
 	private AerationService aerationService;
 	
@@ -19,14 +16,6 @@ public class AerationSeekBarChangeListener implements OnSeekBarChangeListener {
 
 	public void setSeekBar(SeekBar seekBar) {
 		this.seekBar = seekBar;
-	}
-
-	public TextView getTextView() {
-		return textView;
-	}
-
-	public void setTextView(TextView textView) {
-		this.textView = textView;
 	}
 	
 	public Resources getResources() {
@@ -45,26 +34,10 @@ public class AerationSeekBarChangeListener implements OnSeekBarChangeListener {
 		this.aerationService = aerationService;
 	}
 	
+
+	
 	public void setStatus(int status) {
 		getSeekBar().setProgress(status*2);
-		String statusText = "";
-		
-		switch (status) {
-			case 0:
-				statusText = getResources().getString(R.string.text_stop);
-				break;
-			case 1:
-				statusText = getResources().getString(R.string.text_level1);
-				break;
-			case 2:
-				statusText = getResources().getString(R.string.text_level2);
-				break;
-			case 3:
-				statusText = getResources().getString(R.string.text_level3);
-				break;
-		}
-		
-		getTextView().setText(statusText);
 	}
 	
 	@Override

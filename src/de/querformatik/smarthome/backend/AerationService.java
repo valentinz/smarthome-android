@@ -11,6 +11,7 @@ import org.apache.http.message.BasicNameValuePair;
 
 public class AerationService extends Handler {
 	private String soapApi;
+	private Handler listener;
 	
 	public String getSoapApi() {
 		return soapApi;
@@ -20,19 +21,30 @@ public class AerationService extends Handler {
 		this.soapApi = soapApi;
 	}
 	
+	public Handler getListener() {
+		return this.listener;
+	}
+	
+	public void setListener(Handler listener) {
+		this.listener = listener;
+	}
+	
 	protected void httpRequest(List<NameValuePair>params) {
 		String paramString = URLEncodedUtils.format(params, "utf-8");
 
 		HttpService http = new HttpService();
 		AerationServiceResponseHandler response = new AerationServiceResponseHandler();
+		response.setListener(getListener());
 		
 		http.setResponse(response);
 		http.setUrl(getSoapApi() + "?" + paramString);
 		http.start();
 	}
 	
-	public int getCurrent() {
-		return 2;
+	public void requestCurrent() {
+	    List<NameValuePair> params = new LinkedList<NameValuePair>();
+	    params.add(new BasicNameValuePair("getAerationLevel", String.valueOf(1)));
+		httpRequest(params);
 	}
 	
 	public void setCurrent(int current) {

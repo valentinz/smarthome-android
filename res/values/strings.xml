@@ -5,7 +5,11 @@
     <string name="menu_settings">Einstellungen</string>
     <string name="text_aeration">Lüftungsanlage</string>
     <string name="text_stop">Ausgeschalten</string>
+    <string name="text_network_failed">Netzwerk Fehler</string>
 	<string name="text_level1">Stufe 1</string>
 	<string name="text_level2">Stufe 2</string>
 	<string name="text_level3">Stufe 3</string>
+	<string name="text_set_level_success_prefix">Es wurde in</string>
+	<string name="text_set_level_success_suffix">geschalten!</string>
+	<string name="text_set_level_fail">Die Lüftungsanlage konnte nicht erreicht werden, bitte prüfe die Verbindung zum WLAN.</string>
 </resources>
