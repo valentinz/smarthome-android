@@ -1,48 +1,80 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="5dp"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
     tools:context=".AerationActivity" >
 
     <LinearLayout
         android:id="@+id/aerationHeadlineLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="10dp"
-        android:layout_toRightOf="@+id/aerationHeadline" >
-	       
-	    <TextView
-	        android:id="@+id/aerationHeadline"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	    	android:layout_marginLeft="10dp"
-	        android:text="@string/text_aeration" />     
-		        
-	    <TextView
-	        android:id="@+id/aerationStatus"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:layout_marginRight="10dp"
-	        android:text="@string/text_network_failed" 
-	        android:gravity="right" />
+        android:layout_marginTop="10dp" >
 
-  	    </LinearLayout>
+        <TextView
+            android:id="@+id/aerationHeadline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/text_aeration"
+            android:textSize="25sp" />
 
-    
+        <TextView
+            android:id="@+id/aerationStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:gravity="right"
+            android:text="@string/text_network_failed"
+            android:textSize="25sp" />
+    </LinearLayout>
+
     <SeekBar
         android:id="@+id/aerationSeekbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_below="@id/aerationHeadlineLayout"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
         android:max="6"
         android:progress="0" />
-   
 
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/text_power_control_garden"
+        android:textSize="25sp" />
 
-</RelativeLayout>
+    <CheckBox
+        android:id="@+id/checkBox3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:textSize="25sp"
+		android:layout_marginTop="10dp"
+		android:layout_marginLeft="5dp"
+        android:text="@string/text_power_control_garden_no3" />
+
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:textSize="25sp"
+		android:layout_marginTop="10dp"
+		android:layout_marginLeft="5dp"
+        android:text="@string/text_power_control_garden_no2" />
+
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="clip_vertical"
+		android:textSize="25sp"
+		android:layout_marginTop="10dp"
+		android:layout_marginLeft="5dp"
+        android:text="@string/text_power_control_garden_no1" />
+
+</LinearLayout>

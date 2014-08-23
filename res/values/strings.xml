@@ -13,6 +13,11 @@
 	<string name="text_set_level_success_suffix">!</string>
 	<string name="text_set_level_fail">No connection to aeration available, please prove your wifi settings.</string>
 	
+	<string name="text_power_control_garden">Garden</string>
+	<string name="text_power_control_garden_no1">Power 1</string>
+	<string name="text_power_control_garden_no2">Power 2</string>
+	<string name="text_power_control_garden_no3">Power 3</string>
+	
 	<string name="settings_name">Settings</string>
 	<string name="pref_api_url">API URL</string>
 	<string name="pref_api_url_summ">Link to use for the api.</string>

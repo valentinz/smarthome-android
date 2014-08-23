@@ -29,11 +29,11 @@ public class AerationService extends Handler {
 		this.listener = listener;
 	}
 	
-	protected void httpRequest(List<NameValuePair>params) {
+	protected void httpRequest(int type, List<NameValuePair>params) {
 		String paramString = URLEncodedUtils.format(params, "utf-8");
 
 		HttpService http = new HttpService();
-		AerationServiceResponseHandler response = new AerationServiceResponseHandler();
+		AerationServiceResponseHandler response = new AerationServiceResponseHandler(type);
 		response.setListener(getListener());
 		
 		http.setResponse(response);
@@ -44,12 +44,26 @@ public class AerationService extends Handler {
 	public void requestCurrent() {
 	    List<NameValuePair> params = new LinkedList<NameValuePair>();
 	    params.add(new BasicNameValuePair("getAerationLevel", String.valueOf(1)));
-		httpRequest(params);
+		httpRequest(AerationServiceResponseHandler.RESULT_AERATION, params);
 	}
 	
 	public void setCurrent(int current) {
 	    List<NameValuePair> params = new LinkedList<NameValuePair>();
 	    params.add(new BasicNameValuePair("setAerationLevel", String.valueOf(current)));
-		httpRequest(params);
+		httpRequest(AerationServiceResponseHandler.RESULT_AERATION, params);
+	}
+	
+	
+	public void getPowerControl(int num) {
+		List<NameValuePair> params = new LinkedList<NameValuePair>();
+	    params.add(new BasicNameValuePair("getPowerControl", String.valueOf(num)));
+		httpRequest(AerationServiceResponseHandler.RESULT_POWER_CONTROL, params);
+	}
+	
+	public void setPowerControl(int num, int status) {
+		List<NameValuePair> params = new LinkedList<NameValuePair>();
+	    params.add(new BasicNameValuePair("setPowerControl", String.valueOf(num)));
+	    params.add(new BasicNameValuePair("setPowerStatus", String.valueOf(status)));
+		httpRequest(AerationServiceResponseHandler.RESULT_POWER_CONTROL, params);
 	}
 }

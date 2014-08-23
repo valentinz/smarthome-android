@@ -13,6 +13,11 @@
 	<string name="text_set_level_success_suffix">geschalten!</string>
 	<string name="text_set_level_fail">Die Lüftungsanlage konnte nicht erreicht werden, bitte prüfe die Verbindung zum WLAN.</string>
 	
+	<string name="text_power_control_garden">Garten</string>
+	<string name="text_power_control_garden_no1">Brunnen</string>
+	<string name="text_power_control_garden_no2">Licht 2</string>
+	<string name="text_power_control_garden_no3">Licht 1</string>
+	
 	<string name="settings_name">Einstellungen</string>
 	<string name="pref_api_url">API URL</string>
 	<string name="pref_api_url_summ">Link zur API zum Aktualisierungen bekanntgeben.</string>
